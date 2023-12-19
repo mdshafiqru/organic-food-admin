@@ -49,7 +49,7 @@ class HomeView extends StatelessWidget {
               MenuCard(
                 text: 'স্লাইডারস',
                 onTap: () {
-                  Get.to(() => const SlidersView());
+                  Get.to(() => SlidersView());
                 },
               ),
               MenuCard(

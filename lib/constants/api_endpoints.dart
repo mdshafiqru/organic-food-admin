@@ -1,10 +1,10 @@
 class ApiEndPoints {
   ApiEndPoints._();
-  static const _apiBaseUrl = 'http://10.0.2.2:3000/v1/admin';
-  static const _rootUrl = 'http://10.0.2.2:3000/';
+  // static const _apiBaseUrl = 'http://10.0.2.2:3000/v1/admin';
+  // static const _rootUrl = 'http://10.0.2.2:3000/';
 
-  // static const _apiBaseUrl = 'https://organicfoods.passivedesk.com/v1/admin';
-  // static const _rootUrl = 'https://organicfoods.passivedesk.com/';
+  static const _apiBaseUrl = 'https://organicfoods.passivedesk.com/v1/admin';
+  static const _rootUrl = 'https://organicfoods.passivedesk.com/';
 
 // auth api
   static const _login = "$_apiBaseUrl/login";
@@ -13,11 +13,9 @@ class ApiEndPoints {
   static const _getCategories = "$_apiBaseUrl/get-categories";
   static const _createCategory = "$_apiBaseUrl/create-category";
   static const _getSliders = "$_apiBaseUrl/get-sliders";
-  static const _getCarts = "$_apiBaseUrl/get-carts";
+  static const _createSlider = "$_apiBaseUrl/create-slider";
   static const _getDivisions = "$_apiBaseUrl/get-divisions";
-  static const _getAddresses = "$_apiBaseUrl/get-addresses";
-  static const _createAddress = "$_apiBaseUrl/create-address";
-  static const _createOrder = "$_apiBaseUrl/create-order";
+  static const _updateOrderStatus = "$_apiBaseUrl/update-order-status";
 
   static String get rootUrl => _rootUrl;
 
@@ -27,14 +25,16 @@ class ApiEndPoints {
   static String get getCategories => _getCategories;
   static String get createCategory => _createCategory;
   static String get getSliders => _getSliders;
-  static String get getCarts => _getCarts;
+  static String get createSlider => _createSlider;
   static String get getDivisions => _getDivisions;
-  static String get getAddresses => _getAddresses;
-  static String get createAddress => _createAddress;
-  static String get createOrder => _createOrder;
+  static String get updateOrderStatus => _updateOrderStatus;
 
   static String deleteAddress(String id) {
     return "$_apiBaseUrl/delete-address/id=$id";
+  }
+
+  static String deleteSlider(String id) {
+    return "$_apiBaseUrl/delete-slider/id=$id";
   }
 
   static String removeFromCart(String productId) {

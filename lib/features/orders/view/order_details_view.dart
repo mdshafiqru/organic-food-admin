@@ -2,6 +2,8 @@ import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:organic_foods_admin/features/orders/view/update_order_status_view.dart';
+import 'package:organic_foods_admin/widgets/custom_button.dart';
 
 import '../../../constants/api_endpoints.dart';
 import '../../../constants/app_colors.dart';
@@ -11,7 +13,9 @@ import '../../../models/address.dart';
 import '../../../models/order.dart';
 import '../../../models/order_item.dart';
 import '../../../models/product.dart';
+import '../widgets/change_order_status_button.dart';
 import '../widgets/order_item_details.dart';
+import '../widgets/order_shipping_details.dart';
 
 class OrderDetailsView extends StatelessWidget {
   const OrderDetailsView({super.key, required this.order, required this.statusColor});
@@ -31,13 +35,28 @@ class OrderDetailsView extends StatelessWidget {
               _orderId(),
               SizedBox(height: 10.w),
               if (order.status == Status.rejected || order.status == Status.cancelled) _reason(),
-              _shippingDetails(),
+              OrderShippingDetails(order: order, address: order.address ?? Address()),
               SizedBox(height: 10.w),
               _orderItems(context),
+              SizedBox(height: 20.w),
+              _statusButton()
             ],
           ),
         ),
       ),
+    );
+  }
+
+  CustomButton _statusButton() {
+    return CustomButton(
+      text: "অর্ডার স্ট্যাটাস আপডেট করুন",
+      onPressed: () {
+        Get.to(
+          () => UpdateOrderStatusView(orderId: order.id ?? ""),
+          transition: Transition.zoom,
+        );
+      },
+      loading: false,
     );
   }
 
@@ -203,71 +222,6 @@ class OrderDetailsView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 10.w),
       child: Text(text),
-    );
-  }
-
-  Widget _shippingDetails() {
-    final Address address = order.address ?? Address();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "প্রাপকের তথ্য",
-          style: TextStyle(fontSize: 15.sp, color: AppColors.textGreenColor, fontWeight: FontWeight.bold),
-        ),
-        Text(
-          order.receiverName ?? "",
-          style: TextStyle(
-            fontSize: 16.sp,
-            color: AppColors.textColor1,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        Text(
-          order.phone ?? "",
-          style: TextStyle(
-            fontSize: 14.sp,
-            color: AppColors.textColor1,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        Wrap(
-          children: [
-            Text(
-              "${address.location ?? ""}, ",
-              style: TextStyle(
-                fontSize: 15.sp,
-                color: AppColors.textColor1,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              "${address.thana ?? ""}, ",
-              style: TextStyle(
-                fontSize: 15.sp,
-                color: AppColors.textColor1,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              "${address.district ?? ""}, ",
-              style: TextStyle(
-                fontSize: 15.sp,
-                color: AppColors.textColor1,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              "বিভাগঃ ${address.division?.name ?? ""}",
-              style: TextStyle(
-                fontSize: 15.sp,
-                color: AppColors.textColor1,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 
