@@ -61,7 +61,7 @@ class AppHelper {
     );
   }
 
-  static getNumberFormated(num number) {
+  static String getNumberFormated(num number) {
     var numberFormater = NumberFormat('#,##,###.##');
     return numberFormater.format(number);
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:organic_foods_admin/features/products/views/edit_product_view.dart';
 
 import '../../../constants/api_endpoints.dart';
 import '../../../constants/app_colors.dart';
@@ -117,12 +118,13 @@ class ProductDetailsView extends StatelessWidget {
                   ],
                 ),
               ),
-              CustomButton(
-                  text: "Edit",
-                  onPressed: () {
-                    //
-                  },
-                  loading: false),
+              // CustomButton(
+              //   text: "Edit",
+              //   onPressed: () {
+              //     Get.to(() => EditProductView(product: product));
+              //   },
+              //   loading: false,
+              // ),
               SizedBox(height: 20.w),
             ],
           ),
