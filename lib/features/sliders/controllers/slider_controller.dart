@@ -54,7 +54,6 @@ class SliderController extends GetxController {
 
     if (pickedFile != null) {
       imagePath.value = pickedFile.path;
-      print(imagePath.value);
     } else {
       Get.snackbar(
         "Not selected",

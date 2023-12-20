@@ -1,10 +1,10 @@
 class ApiEndPoints {
   ApiEndPoints._();
-  // static const _apiBaseUrl = 'http://10.0.2.2:3000/v1/admin';
-  // static const _rootUrl = 'http://10.0.2.2:3000/';
+  static const _apiBaseUrl = 'http://10.0.2.2:3000/v1/admin';
+  static const _rootUrl = 'http://10.0.2.2:3000/';
 
-  static const _apiBaseUrl = 'https://organicfoods.passivedesk.com/v1/admin';
-  static const _rootUrl = 'https://organicfoods.passivedesk.com/';
+  // static const _apiBaseUrl = 'https://organicfoods.passivedesk.com/v1/admin';
+  // static const _rootUrl = 'https://organicfoods.passivedesk.com/';
 
 // auth api
   static const _login = "$_apiBaseUrl/login";
@@ -12,6 +12,7 @@ class ApiEndPoints {
   static const _getAppInfo = "$_apiBaseUrl/get-app-info";
   static const _getCategories = "$_apiBaseUrl/get-categories";
   static const _createCategory = "$_apiBaseUrl/create-category";
+  static const _createProduct = "$_apiBaseUrl/create-product";
   static const _getSliders = "$_apiBaseUrl/get-sliders";
   static const _createSlider = "$_apiBaseUrl/create-slider";
   static const _getDivisions = "$_apiBaseUrl/get-divisions";
@@ -24,6 +25,7 @@ class ApiEndPoints {
   static String get getAppInfo => _getAppInfo;
   static String get getCategories => _getCategories;
   static String get createCategory => _createCategory;
+  static String get createProduct => _createProduct;
   static String get getSliders => _getSliders;
   static String get createSlider => _createSlider;
   static String get getDivisions => _getDivisions;
@@ -49,8 +51,8 @@ class ApiEndPoints {
     return "$_apiBaseUrl/search-products/query=$query";
   }
 
-  static String allProducts({int? skip = 0}) {
-    return "$_apiBaseUrl/all-products/skip=$skip";
+  static String getProducts({int? skip = 0}) {
+    return "$_apiBaseUrl/get-products/skip=$skip";
   }
 
   static String allOrders({int? skip = 0}) {

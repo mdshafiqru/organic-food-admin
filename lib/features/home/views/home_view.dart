@@ -29,9 +29,9 @@ class HomeView extends StatelessWidget {
                 },
               ),
               MenuCard(
-                text: 'প্রোডাক্ট ',
+                text: 'প্রডাক্ট ',
                 onTap: () {
-                  Get.to(() => const ProductsView());
+                  Get.to(() => ProductsView());
                 },
               ),
               MenuCard(
